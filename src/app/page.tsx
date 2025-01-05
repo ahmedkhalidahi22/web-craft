@@ -1,5 +1,5 @@
-import { PreviewArea } from "@/components/PriviewArea";
+import { PreviewAreaContainer } from "@/components/PreviewAreaContainer";
 
 export default function Home() {
-  return <PreviewArea />;
+  return <PreviewAreaContainer />;
 }
