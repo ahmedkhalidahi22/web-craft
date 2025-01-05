@@ -41,7 +41,7 @@ export function BuilderSideBar() {
   return (
     <div className="w-64 border-l border-stone-200 bg-stone-50">
       <Tabs defaultValue="add" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 bg-stone-100 pt-5">
+        <TabsList className="grid w-full grid-cols-2 bg-stone-100 ">
           <TabsTrigger value="add" className="data-[state=active]:bg-stone-200">
             <Plus className="h-4 w-4 mr-2" /> Add
           </TabsTrigger>
