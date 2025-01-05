@@ -5,7 +5,7 @@ import { BuilderSideBar } from "@/components/BuilderSideBar";
 
 export const metadata: Metadata = {
   title: "Web Craft",
-  description: "minimalist web page builder",
+  description: "Minimalist web page builder",
 };
 
 export default function RootLayout({
