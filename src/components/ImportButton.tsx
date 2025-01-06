@@ -34,16 +34,22 @@ const ImportButton = () => {
 
   return (
     <div className="p-4 border-t border-stone-200">
-      <input type="file" accept="application/json" onChange={handleImport} id="import-file" />
-      <label htmlFor="import-file">
-        <Button
-          variant="outline"
-          className="w-full justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-900"
-        >
-          <Upload className="h-4 w-4 mr-2" />
-          Import
-        </Button>
-      </label>
+      <input
+        type="file"
+        accept="application/json"
+        className="hidden"
+        onChange={handleImport}
+        id="import-file"
+      />
+
+      <Button
+        variant="outline"
+        className="w-full relative justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-900"
+      >
+        <label className="absolute w-full h-full cursor-pointer" htmlFor="import-file" />
+        <Upload className="h-4 w-4 mr-2" />
+        Import
+      </Button>
     </div>
   );
 };
