@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Upload } from "lucide-react";
 import { useEditor } from "../providers/editorProvider";
 import { EditorStateSchema } from "@/lib/schemas";
+import { errorToast, successToast } from "@/lib/utils";
 
 const ImportButton = () => {
   const { dispatch } = useEditor();
@@ -11,24 +12,33 @@ const ImportButton = () => {
   const handleImport = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file && file.type === "application/json") {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const json = JSON.parse(e.target?.result as string);
-          const parsed = EditorStateSchema.safeParse(json);
-          if (parsed.success) {
-            dispatch({ type: "UPDATE_STATE", payload: parsed.data });
-            console.log("Editor state imported:", parsed.data);
-          } else {
-            console.error("Invalid editor state shape:", parsed.error);
+      try {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const json = JSON.parse(e.target?.result as string);
+            const parsed = EditorStateSchema.safeParse(json);
+            if (parsed.success) {
+              dispatch({ type: "UPDATE_STATE", payload: parsed.data });
+              console.log("Editor state imported:", parsed.data);
+              successToast("Import successful", "Website data is loaded successfully.");
+            } else {
+              console.error("Invalid editor state shape:", parsed.error);
+              errorToast("Import failed", "file data is not in the correct format.");
+            }
+          } catch (error) {
+            console.error("Error parsing JSON:", error);
+            errorToast("Import failed", "file data is not in the correct format.");
           }
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
-        }
-      };
-      reader.readAsText(file);
+        };
+        reader.readAsText(file);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+        errorToast("Import failed", "Please upload a valid JSON file.");
+      }
     } else {
       console.error("Please upload a valid JSON file");
+      errorToast("Import failed", "Please upload a valid JSON file.");
     }
   };
 
