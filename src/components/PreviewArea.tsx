@@ -7,6 +7,10 @@ import { Header } from "./builder/Header";
 import Hero from "./builder/Hero";
 import { createSection } from "@/lib/utils";
 import { useEditor } from "@/providers/editorProvider";
+import { Features } from "./builder/Features";
+import Testimonials from "./builder/Testimonials";
+import Footer from "./builder/Footer";
+import { AppFooter } from "./AppFooter";
 
 export function PreviewArea() {
   const [isDraggingOver, setIsDraggingOver] = useState<boolean>(false);
@@ -52,7 +56,7 @@ export function PreviewArea() {
         <div className="absolute inset-0 bg-green-400 opacity-50 z-20 pointer-events-none"></div>
       )}
 
-      <div className=" space-y-5 relative z-10 ">
+      <div className=" min-h-[calc(100vh-150px)] space-y-5 relative z-10 bg-white border border-stone-200 rounded ">
         {state.sections.length > 0 ? (
           sections.map((section) => {
             const SectionName = section.type;
@@ -60,11 +64,16 @@ export function PreviewArea() {
             if (!SectionName) return null;
             if (SectionName === "Header") return <Header key={section.id} />;
             if (SectionName === "Hero") return <Hero key={section.id} />;
+            if (SectionName === "Features") return <Features key={section.id} />;
+            if (SectionName === "Testimonials") return <Testimonials key={section.id} />;
+            if (SectionName === "Footer") return <Footer key={section.id} />;
           })
         ) : (
           <Placeholder />
         )}
       </div>
+
+      <AppFooter />
     </ScrollArea>
   );
 }
