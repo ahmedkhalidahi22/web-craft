@@ -8,6 +8,7 @@ import {
   MessageSquare,
   FootprintsIcon as FooterIcon,
 } from "lucide-react";
+import { EditorSections } from "@/lib/constants";
 
 const sections = [
   { name: "Header", icon: <Layout className="h-4 w-4 mr-2" /> },
@@ -21,16 +22,18 @@ const SideBarSectionItems = () => {
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
   const handleOnDragStart = (
-    e: React.DragEvent<HTMLLIElement>,
-    sectionName: string
+    e: React.DragEvent,
+    sectionName: EditorSections
   ) => {
-    e.dataTransfer.setData("sectionName", sectionName);
+    e.dataTransfer.setData("sectionType", sectionName);
     setDraggedItem(sectionName);
     console.log("drag start", sectionName);
   };
+
   const handleOnDragEnd = () => {
     setDraggedItem(null);
   };
+
   return (
     <div>
       <h3 className="mb-2 text-sm font-semibold text-stone-900">Sections</h3>
@@ -40,7 +43,7 @@ const SideBarSectionItems = () => {
             key={section.name}
             draggable
             onDragStart={(e) => {
-              handleOnDragStart(e, section.name);
+              handleOnDragStart(e, section.name as EditorSections);
             }}
             onDragEnd={handleOnDragEnd}
             className={` ${draggedItem === section.name ? "opacity-50" : ""} `}

@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import SideBarSectionItems from "./SideBarSectionItems";
 import SideBarComponentItems from "./SideBarComponentItems";
 
-export function BuilderSideBar() {
+export function EditorSideBar() {
   return (
     <div className="w-64 border-l border-stone-200 bg-stone-50 flex flex-col h-full">
       <Tabs defaultValue="add" className="flex flex-col h-full">
@@ -13,17 +13,11 @@ export function BuilderSideBar() {
           <TabsTrigger value="add" className="data-[state=active]:bg-stone-200">
             <Plus className="h-4 w-4 mr-2" /> Add
           </TabsTrigger>
-          <TabsTrigger
-            value="settings"
-            className="data-[state=active]:bg-stone-200"
-          >
+          <TabsTrigger value="settings" className="data-[state=active]:bg-stone-200">
             <Settings className="h-4 w-4 mr-2" /> Settings
           </TabsTrigger>
         </TabsList>
-        <TabsContent
-          value="add"
-          className="flex-grow overflow-hidden flex flex-col"
-        >
+        <TabsContent value="add" className="flex-grow overflow-hidden flex flex-col">
           <ScrollArea className="flex-grow">
             <div className="p-4 space-y-6">
               <SideBarSectionItems />

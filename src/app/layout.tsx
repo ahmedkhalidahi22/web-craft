@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { BuilderSideBar } from "@/components/BuilderSideBar";
+import { EditorSideBar } from "@/components/EditorSideBar";
+import { EditorProvider } from "@/providers/editorProvider";
 
 export const metadata: Metadata = {
   title: "Web Craft",
@@ -16,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`flex flex-col h-screen bg-stone-50`}>
-        <Navbar />
-        <div className="flex flex-1 overflow-hidden">
-          {children}
-          <BuilderSideBar />
-        </div>
+        <EditorProvider>
+          <Navbar />
+          <div className="flex flex-1 overflow-hidden">
+            {children}
+            <EditorSideBar />
+          </div>
+        </EditorProvider>
       </body>
     </html>
   );
