@@ -1,13 +1,26 @@
 import React from "react";
 import { User } from "lucide-react";
 import { Section } from "@/lib/types";
+import { useEditor } from "@/providers/editorProvider";
 type Props = {
   section: Section;
 };
 
 const Testimonials = ({ section }: Props) => {
+  const { dispatch } = useEditor();
+
+  const handleOnClickBody = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    dispatch({
+      type: "CHANGE_SELECTED_SECTION",
+      payload: section,
+    });
+  };
   return (
-    <section className="py-5">
+    <section
+      onClick={handleOnClickBody}
+      className="border-transparent border-2 hover:border-gray-400 hover:border-dashed cursor-pointer"
+    >
       <div className="container mx-auto  max-w-6xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">What Our Clients Say</h2>

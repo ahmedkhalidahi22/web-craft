@@ -1,14 +1,28 @@
 import React from "react";
 import { Command } from "lucide-react";
 import { Section } from "@/lib/types";
+import { useEditor } from "@/providers/editorProvider";
 
 type Props = {
   section: Section;
 };
 
 export function Footer({ section }: Props) {
+  const { dispatch } = useEditor();
+
+  const handleOnClickBody = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    dispatch({
+      type: "CHANGE_SELECTED_SECTION",
+      payload: section,
+    });
+  };
+
   return (
-    <footer className="bg-gray-900 text-white rounded-lg shadow ">
+    <footer
+      onClick={handleOnClickBody}
+      className="bg-gray-900 text-white rounded-lg shadow border-2 border-transparent hover:border-gray-400 hover:border-dashed cursor-pointer "
+    >
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a href="#" className="flex items-center mb-4 sm:mb-0 space-x-3">

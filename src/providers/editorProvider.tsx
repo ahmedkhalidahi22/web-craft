@@ -6,7 +6,8 @@ type Action =
   | { type: "ADD_SECTION"; payload: Section }
   | { type: "REMOVE_SECTION"; payload: string }
   | { type: "SELECT_SECTION"; payload: Section | null }
-  | { type: "UPDATE_STATE"; payload: EditorState };
+  | { type: "UPDATE_STATE"; payload: EditorState }
+  | { type: "CHANGE_SELECTED_SECTION"; payload: Section };
 
 const initialState: EditorState = {
   sections: [],
@@ -40,6 +41,11 @@ const editorReducer = (state: EditorState, action: Action): EditorState => {
         ...state,
         sections: action.payload.sections,
         selectedSection: action.payload.selectedSection,
+      };
+    case "CHANGE_SELECTED_SECTION":
+      return {
+        ...state,
+        selectedSection: action.payload,
       };
     default:
       return state;

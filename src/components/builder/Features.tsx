@@ -1,4 +1,5 @@
 import { Section } from "@/lib/types";
+import { useEditor } from "@/providers/editorProvider";
 import { CheckCircle, Shield, Star } from "lucide-react";
 
 type Props = {
@@ -6,8 +7,21 @@ type Props = {
 };
 
 export function Features({ section }: Props) {
+  const { dispatch } = useEditor();
+
+  const handleOnClickBody = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    dispatch({
+      type: "CHANGE_SELECTED_SECTION",
+      payload: section,
+    });
+  };
+
   return (
-    <section className="py-5">
+    <section
+      onClick={handleOnClickBody}
+      className="py-5 border-2 border-transparent hover:border-gray-400 hover:border-dashed cursor-pointer"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
         <div className=" text-center">
           <h2 className="text-4xl text-center font-bold text-gray-900 py-5">

@@ -1,13 +1,26 @@
 import Image from "next/image";
 import placeholderImage from "@/public/images/placeholder.png";
 import { Section } from "@/lib/types";
+import { useEditor } from "@/providers/editorProvider";
 
 type Props = {
   section: Section;
 };
 const Hero = ({ section }: Props) => {
+  const { dispatch } = useEditor();
+
+  const handleOnClickBody = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    dispatch({
+      type: "CHANGE_SELECTED_SECTION",
+      payload: section,
+    });
+  };
   return (
-    <section className=" ">
+    <section
+      onClick={handleOnClickBody}
+      className="border-transparent border-2 hover:border-gray-400 hover:border-dashed cursor-pointer"
+    >
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         {/* Text Section */}
         <div className="md:w-1/2 text-center md:text-left px-4">

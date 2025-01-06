@@ -3,13 +3,26 @@
 import React from "react";
 import { Command } from "lucide-react";
 import { Section } from "@/lib/types";
+import { useEditor } from "@/providers/editorProvider";
 
 type Props = {
   section: Section;
 };
 export function Header({ section }: Props) {
+  const { dispatch } = useEditor();
+
+  const handleOnClickBody = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    dispatch({
+      type: "CHANGE_SELECTED_SECTION",
+      payload: section,
+    });
+  };
   return (
-    <nav className="bg-gray-900 text-white w-full rounded-lg">
+    <nav
+      onClick={handleOnClickBody}
+      className="bg-gray-900 text-white w-full rounded-lg border-2 border-transparent hover:border-gray-400 hover:border-dashed cursor-pointer"
+    >
       <div className="container mx-auto flex items-center justify-between p-4">
         {/* Logo and Website Name */}
         <div className="flex items-center space-x-2">
