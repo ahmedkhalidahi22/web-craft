@@ -3,14 +3,10 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
 import { Placeholder } from "./Placeholder";
-import { Header } from "./builder/Header";
-import Hero from "./builder/Hero";
 import { createSection } from "@/lib/utils";
 import { useEditor } from "@/providers/editorProvider";
-import { Features } from "./builder/Features";
-import Testimonials from "./builder/Testimonials";
-import Footer from "./builder/Footer";
 import { AppFooter } from "./AppFooter";
+import RenderedSection from "./RenderedSection";
 
 export function PreviewArea() {
   const [isDraggingOver, setIsDraggingOver] = useState<boolean>(false);
@@ -56,18 +52,9 @@ export function PreviewArea() {
         <div className="absolute inset-0 bg-green-400 opacity-50 z-20 pointer-events-none"></div>
       )}
 
-      <div className=" min-h-[calc(100vh-150px)] space-y-5 relative z-10 bg-white border border-stone-200 rounded ">
+      <div className=" min-h-[calc(100vh-150px)] space-y-5 relative z-10 bg-white border border-stone-200 rounded shadow ">
         {state.sections.length > 0 ? (
-          sections.map((section) => {
-            const SectionName = section.type;
-
-            if (!SectionName) return null;
-            if (SectionName === "Header") return <Header key={section.id} />;
-            if (SectionName === "Hero") return <Hero key={section.id} />;
-            if (SectionName === "Features") return <Features key={section.id} />;
-            if (SectionName === "Testimonials") return <Testimonials key={section.id} />;
-            if (SectionName === "Footer") return <Footer key={section.id} />;
-          })
+          sections.map((section) => <RenderedSection key={section.id} section={section} />)
         ) : (
           <Placeholder />
         )}

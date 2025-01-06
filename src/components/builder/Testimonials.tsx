@@ -1,7 +1,11 @@
 import React from "react";
 import { User } from "lucide-react";
+import { Section } from "@/lib/types";
+type Props = {
+  section: Section;
+};
 
-const Testimonials = () => {
+const Testimonials = ({ section }: Props) => {
   return (
     <section className="py-5">
       <div className="container mx-auto  max-w-6xl">

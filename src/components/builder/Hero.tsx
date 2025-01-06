@@ -1,7 +1,11 @@
 import Image from "next/image";
 import placeholderImage from "@/public/images/placeholder.png";
+import { Section } from "@/lib/types";
 
-const Hero = () => {
+type Props = {
+  section: Section;
+};
+const Hero = ({ section }: Props) => {
   return (
     <section className=" ">
       <div className="container mx-auto flex flex-col md:flex-row items-center">

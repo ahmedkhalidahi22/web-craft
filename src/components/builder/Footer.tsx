@@ -1,7 +1,12 @@
 import React from "react";
 import { Command } from "lucide-react";
+import { Section } from "@/lib/types";
 
-export function Footer() {
+type Props = {
+  section: Section;
+};
+
+export function Footer({ section }: Props) {
   return (
     <footer className="bg-gray-900 text-white rounded-lg shadow ">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
