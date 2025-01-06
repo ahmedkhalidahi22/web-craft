@@ -1,10 +1,22 @@
 "use client";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { v1 } from "uuid";
+import { Placeholder } from "./Placeholder";
+import { Header } from "./builder/Header";
 
+type Section = {
+  id: string;
+  name: string;
+};
 export function PreviewArea() {
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [sections, setSections] = useState<Section[]>([]);
+
+  useEffect(() => {
+    console.log("Printed Sections", sections);
+  }, [sections]);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -16,7 +28,10 @@ export function PreviewArea() {
     setIsDragging(false);
   };
 
-  const handleDrop = () => {
+  const handleDrop = (e: React.DragEvent) => {
+    const sectionName = e.dataTransfer.getData("sectionName");
+    console.log("dropped", sectionName);
+    setSections((prev) => [...prev, { id: v1(), name: sectionName }]);
     setIsDragging(false);
   };
   return (
@@ -31,9 +46,16 @@ export function PreviewArea() {
       )}
 
       <div className=" space-y-4 relative z-10">
-        <div className="h-[calc(100vh-130px)] bg-white border border-stone-200 rounded flex items-center justify-center text-stone-500">
-          Start building your webpage by dragging elements from the sidebar.
-        </div>
+        {sections ? (
+          sections.map((section) => {
+            const SectionName = section.name;
+
+            if (!SectionName) return null;
+            if (SectionName === "Header") return <Header key={section.id} />;
+          })
+        ) : (
+          <Placeholder />
+        )}
       </div>
     </ScrollArea>
   );
