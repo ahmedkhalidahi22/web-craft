@@ -1,11 +1,13 @@
-import { Plus, Settings, Upload } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import React from "react";
+import { Plus, Settings } from "lucide-react";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import SideBarSectionItems from "./SideBarSectionItems";
 import SideBarComponentItems from "./SideBarComponentItems";
+import ImportButton from "./ImportButton";
 
-export function EditorSideBar() {
+const EditorSideBar = () => {
   return (
     <div className="w-64 border-l border-stone-200 bg-stone-50 flex flex-col h-full">
       <Tabs defaultValue="add" className="flex flex-col h-full">
@@ -32,16 +34,10 @@ export function EditorSideBar() {
             </div>
           </ScrollArea>
         </TabsContent>
-        <div className="p-4 border-t border-stone-200">
-          <Button
-            variant="outline"
-            className="w-full justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-900"
-          >
-            <Upload className="h-4 w-4 mr-2" />
-            Import
-          </Button>
-        </div>
+        <ImportButton />
       </Tabs>
     </div>
   );
-}
+};
+
+export default EditorSideBar;

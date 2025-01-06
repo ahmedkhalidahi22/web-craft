@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { EditorSideBar } from "@/components/EditorSideBar";
 import { EditorProvider } from "@/providers/editorProvider";
+import EditorSideBar from "@/components/EditorSideBar";
 
 export const metadata: Metadata = {
   title: "Web Craft",

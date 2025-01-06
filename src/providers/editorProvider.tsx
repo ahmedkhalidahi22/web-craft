@@ -1,21 +1,12 @@
 "use client";
+import { EditorState, Section } from "@/lib/types";
 import React, { createContext, useReducer, useContext, ReactNode } from "react";
-
-type Section = {
-  id: string;
-  type: string;
-  content: object;
-};
-
-type EditorState = {
-  sections: Section[];
-  selectedSection: Section | null;
-};
 
 type Action =
   | { type: "ADD_SECTION"; payload: Section }
   | { type: "REMOVE_SECTION"; payload: string }
-  | { type: "SELECT_SECTION"; payload: Section | null };
+  | { type: "SELECT_SECTION"; payload: Section | null }
+  | { type: "UPDATE_STATE"; payload: EditorState };
 
 const initialState: EditorState = {
   sections: [],
@@ -43,6 +34,12 @@ const editorReducer = (state: EditorState, action: Action): EditorState => {
       return {
         ...state,
         selectedSection: action.payload,
+      };
+    case "UPDATE_STATE":
+      return {
+        ...state,
+        sections: action.payload.sections,
+        selectedSection: action.payload.selectedSection,
       };
     default:
       return state;
