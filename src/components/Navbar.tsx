@@ -20,6 +20,8 @@ export function Navbar({
           WebCraft
         </span>
       </div>
+
+      {/* <p className="text-sm text-stone-300">developed by Ahmed Khalid </p> */}
       <Button
         variant="outline"
         className="text-stone-700 border-stone-300 hover:bg-stone-100"
