@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { EditorProvider } from "@/providers/editorProvider";
 import EditorSideBar from "@/components/EditorSideBar";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Web Craft",
@@ -24,6 +25,7 @@ export default function RootLayout({
             <EditorSideBar />
           </div>
         </EditorProvider>
+        <Toaster />
       </body>
     </html>
   );

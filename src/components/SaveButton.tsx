@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Download } from "lucide-react";
 import { useEditor } from "../providers/editorProvider";
+import { toast } from "@/hooks/use-toast";
 
 const SaveButton = () => {
   const { state } = useEditor();
@@ -13,10 +14,15 @@ const SaveButton = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "editorState.json";
+    a.download = "saved-website.json";
     a.click();
     URL.revokeObjectURL(url);
     console.log("Editor state saved and downloaded:", editorState);
+    toast({
+      title: "Website saved",
+      description: "Your website has been saved successfully.",
+      variant: "success",
+    });
   };
 
   return (
