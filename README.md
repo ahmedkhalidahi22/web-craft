@@ -1,4 +1,4 @@
-## WebCraft
+## WebCraft | for Rekaz challenge 
 WebCraft is a mini website builder web app. It allows users to build websites using a drag-and-drop builder with various prebuilt web sections, real-time preview, import/export functionality, and customizable components. Developed in efforts to solve the REKAZ hiring assignment.
 
 Technologies Used
