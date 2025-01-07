@@ -2,19 +2,21 @@
 WebCraft is a mini website builder web app. It allows users to build websites with a drag-and-drop builder, real-time preview, import/export functionality, and customizable components. Developed in efforts to solve the REKAZ hiring assignment.
 
 Technologies Used
-•	Nextjs
-•	TypeScript
-•	Shadcn UI
-•	Tailwind CSS
-•	Context API
-•	Zod
-•	Shadcn toasts
+-	Nextjs
+-	TypeScript
+-	Shadcn UI
+-	Tailwind CSS
+-	Context API
+- Zod
+-	Shadcn toasts
 
 
 ## Live Preview
 Check out the web app here: https://webcraft-ak.vercel.app/
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+##
+
 
 ## Getting Started
 
