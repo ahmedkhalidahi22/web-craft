@@ -21,10 +21,7 @@ const sections = [
 const SideBarSectionItems = () => {
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
-  const handleOnDragStart = (
-    e: React.DragEvent,
-    sectionName: EditorSections
-  ) => {
+  const handleOnDragStart = (e: React.DragEvent, sectionName: EditorSections) => {
     e.dataTransfer.setData("sectionType", sectionName);
     setDraggedItem(sectionName);
     console.log("drag start", sectionName);
