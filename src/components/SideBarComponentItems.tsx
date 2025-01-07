@@ -12,7 +12,7 @@ const components = [
 const SideBarComponentItems = () => {
   return (
     <div className=" relative py-3 px-2 border border-stone-300 rounded-lg ">
-      <div className="absolute top-0 left-0 h-full w-full bg-stone-200 opacity-50"></div>
+      <div className="absolute top-0 left-0 h-full w-full bg-stone-200 opacity-45"></div>
       <p className="absolute -top-[18px] right-[4px] text-xs font-medium text-stone-500">
         Coming soon
       </p>
