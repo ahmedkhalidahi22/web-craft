@@ -52,7 +52,11 @@ export function PreviewArea() {
         <div className="absolute inset-0 bg-green-400 opacity-50 z-30 pointer-events-none"></div>
       )}
 
-      <div className=" min-h-[calc(100vh-150px)] space-y-5 relative z-0 bg-white border border-stone-200 rounded shadow ">
+      <div
+        className={` min-h-[calc(100vh-150px)] space-y-5 relative z-0 bg-white border border-stone-200 rounded shadow ${
+          state.sections.length > 0 ? "pt-5" : ""
+        } `}
+      >
         {state.sections.length > 0 ? (
           sections.map((section) => <RenderedSection key={section.id} section={section} />)
         ) : (
