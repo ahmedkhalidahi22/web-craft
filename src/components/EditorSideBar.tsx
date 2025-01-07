@@ -21,7 +21,7 @@ const EditorSideBar = () => {
         </TabsList>
         <TabsContent value="add" className="flex-grow overflow-hidden flex flex-col">
           <ScrollArea className="flex-grow">
-            <div className="p-4 space-y-6">
+            <div className="p-4 space-y-7">
               <SideBarSectionItems />
               <SideBarComponentItems />
             </div>

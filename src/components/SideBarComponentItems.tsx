@@ -1,10 +1,4 @@
-import {
-  BoxIcon as ButtonIcon,
-  Link,
-  Type,
-  Image,
-  Heading1,
-} from "lucide-react";
+import { BoxIcon as ButtonIcon, Link, Type, Image, Heading1 } from "lucide-react";
 import { Button } from "./ui/button";
 
 const components = [
@@ -17,7 +11,11 @@ const components = [
 
 const SideBarComponentItems = () => {
   return (
-    <div>
+    <div className=" relative py-3 px-2 border border-stone-300 rounded-lg ">
+      <div className="absolute top-0 left-0 h-full w-full bg-stone-200 opacity-50"></div>
+      <p className="absolute -top-[18px] right-[4px] text-xs font-medium text-stone-500">
+        Coming soon
+      </p>
       <h3 className="mb-2 text-sm font-semibold text-stone-900">Components</h3>
       <ul className="space-y-2">
         {components.map((component) => (
