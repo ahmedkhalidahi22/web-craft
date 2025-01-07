@@ -9,7 +9,8 @@ type Action =
   | { type: "UPDATE_STATE"; payload: EditorState }
   | { type: "CHANGE_SELECTED_SECTION"; payload: Section }
   | { type: "MOVE_SECTION_ABOVE"; payload: string }
-  | { type: "MOVE_SECTION_BELOW"; payload: string };
+  | { type: "MOVE_SECTION_BELOW"; payload: string }
+  | { type: "UPDATE_SECTION_CONTENT"; payload: Section };
 
 const initialState: EditorState = {
   sections: [],
@@ -74,7 +75,18 @@ const editorReducer = (state: EditorState, action: Action): EditorState => {
           sections: newSections,
         };
       }
+
       return state;
+    }
+    case "UPDATE_SECTION_CONTENT": {
+      const updatedSections = state.sections.map((section) =>
+        section.id === action.payload.id ? action.payload : section
+      );
+      return {
+        ...state,
+        sections: updatedSections,
+        selectedSection: action.payload,
+      };
     }
     default:
       return state;

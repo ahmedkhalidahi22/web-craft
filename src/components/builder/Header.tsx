@@ -37,7 +37,7 @@ export function Header({ section }: Props) {
         {/* Logo and Website Name */}
         <div className="flex items-center space-x-2">
           <Command className="h-6 w-6" />
-          <span className=" font-bold">MyWebsite</span>
+          <span className=" font-bold">{section.content.websiteName}</span>
         </div>
 
         {/* Navigation Links */}

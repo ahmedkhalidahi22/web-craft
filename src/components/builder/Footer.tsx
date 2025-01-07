@@ -39,7 +39,7 @@ export function Footer({ section }: Props) {
           <a href="#" className="flex items-center mb-4 sm:mb-0 space-x-3">
             <div className="flex items-center space-x-2">
               <Command className="h-6 w-6" />
-              <span className=" font-bold">MyWebsite</span>
+              <span className=" font-bold">{section.content.websiteName}</span>
             </div>
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-300 sm:mb-0">
@@ -69,7 +69,7 @@ export function Footer({ section }: Props) {
         <span className="block text-sm text-gray-300 sm:text-center">
           © 2023{" "}
           <a href="#" className="hover:underline">
-            MyWebsite™
+            {section.content.websiteName}™
           </a>
           . All Rights Reserved.
         </span>

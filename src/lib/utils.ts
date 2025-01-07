@@ -11,15 +11,29 @@ export function cn(...inputs: ClassValue[]) {
 export const createSection = (sectionType: string): Section | null => {
   switch (sectionType) {
     case "Header":
-      return { id: v4(), type: "Header", content: {} };
+      return {
+        id: v4(),
+        type: "Header",
+        content: {
+          websiteName: "MyWebsite",
+        },
+      };
     case "Hero":
-      return { id: v4(), type: "Hero", content: {} };
+      return {
+        id: v4(),
+        type: "Hero",
+        content: {
+          title: "Welcome to Our Website",
+          subtitle: "Discover amazing features and solutions to enhance your business growth.",
+          buttonText: "Get Started",
+        },
+      };
     case "Features":
       return { id: v4(), type: "Features", content: {} };
     case "Testimonials":
       return { id: v4(), type: "Testimonials", content: {} };
     case "Footer":
-      return { id: v4(), type: "Footer", content: {} };
+      return { id: v4(), type: "Footer", content: { websiteName: "MyWebsite" } };
     default:
       console.log("Unknown section type");
       return null;
