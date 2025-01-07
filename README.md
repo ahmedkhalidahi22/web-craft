@@ -1,14 +1,16 @@
 ## WebCraft
-WebCraft is a mini website builder web app. It allows users to build websites with a drag-and-drop builder, real-time preview, import/export functionality, and customizable components. Developed in efforts to solve the REKAZ hiring assignment.
+WebCraft is a mini website builder web app. It allows users to build websites using a drag-and-drop builder with various prebuilt web sections, real-time preview, import/export functionality, and customizable components. Developed in efforts to solve the REKAZ hiring assignment.
 
 Technologies Used
 -	Nextjs
 -	TypeScript
 -	Shadcn UI
 -	Tailwind CSS
+- Native Drag and Drop API
 -	Context API
 - Zod
 -	Shadcn toasts
+
 
 
 ## Live Preview
