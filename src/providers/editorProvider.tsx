@@ -32,6 +32,7 @@ const editorReducer = (state: EditorState, action: Action): EditorState => {
       return {
         ...state,
         sections: state.sections.filter((section) => section.id !== action.payload),
+        selectedSection: null,
       };
     case "SELECT_SECTION":
       return {
