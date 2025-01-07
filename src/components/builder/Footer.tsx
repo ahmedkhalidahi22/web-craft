@@ -4,6 +4,7 @@ import { Section } from "@/lib/types";
 import { useEditor } from "@/providers/editorProvider";
 import { cn } from "@/lib/utils";
 import Badge from "../Badge";
+import { ToolBar } from "../ToolBar";
 
 type Props = {
   section: Section;
@@ -32,7 +33,7 @@ export function Footer({ section }: Props) {
         }
       )}
     >
-      {section.id === selectedSection?.id && <Badge className="left-0">{section.type}</Badge>}
+      {section.id === selectedSection?.id && <ToolBar />}
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a href="#" className="flex items-center mb-4 sm:mb-0 space-x-3">

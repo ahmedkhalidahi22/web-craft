@@ -4,6 +4,7 @@ import { Section } from "@/lib/types";
 import { useEditor } from "@/providers/editorProvider";
 import { cn } from "@/lib/utils";
 import Badge from "../Badge";
+import { ToolBar } from "../ToolBar";
 type Props = {
   section: Section;
 };
@@ -27,7 +28,7 @@ const Testimonials = ({ section }: Props) => {
         "hover:border-gray-400 hover:border-dashed": section.id !== selectedSection?.id,
       })}
     >
-      {section.id === selectedSection?.id && <Badge>{section.type}</Badge>}
+      {section.id === selectedSection?.id && <ToolBar />}
       <div className="container mx-auto  max-w-6xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">What Our Clients Say</h2>

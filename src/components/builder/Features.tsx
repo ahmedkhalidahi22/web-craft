@@ -2,7 +2,7 @@ import { Section } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useEditor } from "@/providers/editorProvider";
 import { CheckCircle, Shield, Star } from "lucide-react";
-import Badge from "../Badge";
+import { ToolBar } from "../ToolBar";
 
 type Props = {
   section: Section;
@@ -28,7 +28,7 @@ export function Features({ section }: Props) {
         "hover:border-gray-400 hover:border-dashed": section.id !== selectedSection?.id,
       })}
     >
-      {section.id === selectedSection?.id && <Badge>{section.type}</Badge>}
+      {section.id === selectedSection?.id && <ToolBar />}
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
         <div className=" text-center">
           <h2 className="text-4xl text-center font-bold text-gray-900 py-5">

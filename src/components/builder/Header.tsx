@@ -5,7 +5,7 @@ import { Command } from "lucide-react";
 import { Section } from "@/lib/types";
 import { useEditor } from "@/providers/editorProvider";
 import { cn } from "@/lib/utils";
-import Badge from "../Badge";
+import { ToolBar } from "../ToolBar";
 
 type Props = {
   section: Section;
@@ -32,7 +32,7 @@ export function Header({ section }: Props) {
         }
       )}
     >
-      {section.id === selectedSection?.id && <Badge>{section.type}</Badge>}
+      {section.id === selectedSection?.id && <ToolBar />}
       <div className="container mx-auto flex items-center justify-between p-4">
         {/* Logo and Website Name */}
         <div className="flex items-center space-x-2">

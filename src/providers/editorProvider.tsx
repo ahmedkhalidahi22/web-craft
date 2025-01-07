@@ -7,7 +7,9 @@ type Action =
   | { type: "REMOVE_SECTION"; payload: string }
   | { type: "SELECT_SECTION"; payload: Section | null }
   | { type: "UPDATE_STATE"; payload: EditorState }
-  | { type: "CHANGE_SELECTED_SECTION"; payload: Section };
+  | { type: "CHANGE_SELECTED_SECTION"; payload: Section }
+  | { type: "MOVE_SECTION_ABOVE"; payload: string }
+  | { type: "MOVE_SECTION_BELOW"; payload: string };
 
 const initialState: EditorState = {
   sections: [],
@@ -47,6 +49,32 @@ const editorReducer = (state: EditorState, action: Action): EditorState => {
         ...state,
         selectedSection: action.payload,
       };
+    case "MOVE_SECTION_ABOVE": {
+      const index = state.sections.findIndex((section) => section.id === action.payload);
+      if (index > 0) {
+        const newSections = [...state.sections];
+        const [movedSection] = newSections.splice(index, 1);
+        newSections.splice(index - 1, 0, movedSection);
+        return {
+          ...state,
+          sections: newSections,
+        };
+      }
+      return state;
+    }
+    case "MOVE_SECTION_BELOW": {
+      const index = state.sections.findIndex((section) => section.id === action.payload);
+      if (index < state.sections.length - 1) {
+        const newSections = [...state.sections];
+        const [movedSection] = newSections.splice(index, 1);
+        newSections.splice(index + 1, 0, movedSection);
+        return {
+          ...state,
+          sections: newSections,
+        };
+      }
+      return state;
+    }
     default:
       return state;
   }

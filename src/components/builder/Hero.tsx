@@ -4,6 +4,7 @@ import { Section } from "@/lib/types";
 import { useEditor } from "@/providers/editorProvider";
 import { cn } from "@/lib/utils";
 import Badge from "../Badge";
+import { ToolBar } from "../ToolBar";
 
 type Props = {
   section: Section;
@@ -27,7 +28,7 @@ const Hero = ({ section }: Props) => {
         "hover:border-gray-400 hover:border-dashed": section.id !== selectedSection?.id,
       })}
     >
-      {section.id === selectedSection?.id && <Badge>{section.type}</Badge>}
+      {section.id === selectedSection?.id && <ToolBar />}
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         {/* Text Section */}
         <div className="md:w-1/2 text-center md:text-left px-4">
