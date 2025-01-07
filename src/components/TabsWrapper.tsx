@@ -9,7 +9,7 @@ export const TabsWrapper = ({ children }: { children: ReactNode }) => {
   const { state } = useEditor();
   const { selectedSection } = state;
 
-  const [tab, setTab] = useState<string>("tab1");
+  const [tab, setTab] = useState<string>("add");
 
   const onTabChange = (value: string) => {
     setTab(value);
