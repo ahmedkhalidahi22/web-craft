@@ -32,11 +32,10 @@ export function Features({ section }: Props) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
         <div className=" text-center">
           <h2 className="text-4xl text-center font-bold text-gray-900 py-5">
-            Revolutionary Features
+            {section.content.title}
           </h2>
           <p className="text-lg font-normal text-gray-500 max-w-md md:max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-            elementum tristique. Duis cursus, mi quis
+            {section.content.description}
           </p>
         </div>
         <div className="flex flex-row gap-5">

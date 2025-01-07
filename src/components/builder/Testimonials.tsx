@@ -31,8 +31,8 @@ const Testimonials = ({ section }: Props) => {
       {section.id === selectedSection?.id && <ToolBar />}
       <div className="container mx-auto  max-w-6xl">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800">What Our Clients Say</h2>
-          <p className="text-gray-600">Testimonials from our happy clients</p>
+          <h2 className="text-3xl font-bold text-gray-800">{section.content.title}</h2>
+          <p className="text-gray-600">{section.content.description}</p>
         </div>
         <div className="flex gap-8 ">
           <div className="w-full  flex flex-col items-center text-center">
