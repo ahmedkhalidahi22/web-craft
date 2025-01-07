@@ -2,12 +2,15 @@ import React from "react";
 import { User } from "lucide-react";
 import { Section } from "@/lib/types";
 import { useEditor } from "@/providers/editorProvider";
+import { cn } from "@/lib/utils";
+import Badge from "../Badge";
 type Props = {
   section: Section;
 };
 
 const Testimonials = ({ section }: Props) => {
-  const { dispatch } = useEditor();
+  const { state, dispatch } = useEditor();
+  const { selectedSection } = state;
 
   const handleOnClickBody = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -19,8 +22,12 @@ const Testimonials = ({ section }: Props) => {
   return (
     <section
       onClick={handleOnClickBody}
-      className="border-transparent border-2 hover:border-gray-400 hover:border-dashed cursor-pointer"
+      className={cn("border-transparent border-[2px]  cursor-pointer relative", {
+        "border-blue-700": section.id === selectedSection?.id,
+        "hover:border-gray-400 hover:border-dashed": section.id !== selectedSection?.id,
+      })}
     >
+      {section.id === selectedSection?.id && <Badge>{section.type}</Badge>}
       <div className="container mx-auto  max-w-6xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">What Our Clients Say</h2>

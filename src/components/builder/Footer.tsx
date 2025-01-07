@@ -2,13 +2,16 @@ import React from "react";
 import { Command } from "lucide-react";
 import { Section } from "@/lib/types";
 import { useEditor } from "@/providers/editorProvider";
+import { cn } from "@/lib/utils";
+import Badge from "../Badge";
 
 type Props = {
   section: Section;
 };
 
 export function Footer({ section }: Props) {
-  const { dispatch } = useEditor();
+  const { state, dispatch } = useEditor();
+  const { selectedSection } = state;
 
   const handleOnClickBody = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -21,8 +24,15 @@ export function Footer({ section }: Props) {
   return (
     <footer
       onClick={handleOnClickBody}
-      className="bg-gray-900 text-white rounded-lg shadow border-2 border-transparent hover:border-gray-400 hover:border-dashed cursor-pointer "
+      className={cn(
+        "bg-gray-900 text-white rounded-lg shadow border-2 border-transparent  cursor-pointer relative",
+        {
+          "border-blue-700": section.id === selectedSection?.id,
+          "hover:border-gray-400 hover:border-dashed": section.id !== selectedSection?.id,
+        }
+      )}
     >
+      {section.id === selectedSection?.id && <Badge className="left-0">{section.type}</Badge>}
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a href="#" className="flex items-center mb-4 sm:mb-0 space-x-3">
