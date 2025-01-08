@@ -4,15 +4,18 @@ import Footer from "./builder/Footer";
 import { Header } from "./builder/Header";
 import Hero from "./builder/Hero";
 import Testimonials from "./builder/Testimonials";
+import { memo } from "react";
 
 type Props = {
   section: Section;
 };
 
-const RenderedSection = ({ section }: Props) => {
+const RenderedSection = memo(({ section }: Props) => {
   const { type: SectionName } = section;
 
   if (!SectionName) return null;
+
+  console.log("im RenderedSection component, i got rendered");
 
   switch (SectionName) {
     case "Header":
@@ -28,6 +31,8 @@ const RenderedSection = ({ section }: Props) => {
     default:
       return null;
   }
-};
+});
+
+RenderedSection.displayName = "RenderedSection";
 
 export default RenderedSection;
